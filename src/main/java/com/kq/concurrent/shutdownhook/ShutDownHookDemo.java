@@ -15,7 +15,7 @@ public class ShutDownHookDemo {
 
         Thread.sleep(3000);
 
-        unregister();
+//        unregister();
 
     }
 
