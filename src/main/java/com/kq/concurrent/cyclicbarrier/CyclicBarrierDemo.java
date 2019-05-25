@@ -1,6 +1,7 @@
 package com.kq.concurrent.cyclicbarrier;
 
 import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.locks.LockSupport;
 
 /**
  * CyclicBarrierDemo
@@ -14,9 +15,10 @@ public class CyclicBarrierDemo {
         CyclicBarrier barrier = new CyclicBarrier(4, new Runnable() {
             @Override
             public void run() {
-                System.out.println(" >>> 这是一个栅栏.");
+
                 try {
                     Thread.sleep(1500);
+                    System.out.println(" >>> 出发，去2号营地.");
                 }catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -29,8 +31,9 @@ public class CyclicBarrierDemo {
             new Thread(()->{
                 try {
 
+                    System.out.println(Thread.currentThread().getName()+"号运动员，到达1号营地!");
                     barrier.await();
-                    System.out.println(Thread.currentThread().getName()+"号运动员，到达营地!");
+
                 }catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -38,6 +41,7 @@ public class CyclicBarrierDemo {
             }).start();
         }
 
+        LockSupport.parkNanos(1000 * 1000 * 1000L);
 
     }
 }
