@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * CompletableFutureAllOfDemo
- * 所有的future都完成
+ * 只要一个future完成，就返回
  * @author kq
  * @date 2019-09-19
  */
@@ -19,6 +19,7 @@ public class CompletableFutureAnyOfDemo {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
+        // 提交一个执行的任务,有结果返回值
         CompletableFuture<String> f1 = CompletableFuture.supplyAsync(()->{
             try {
                 TimeUnit.SECONDS.sleep(5);
