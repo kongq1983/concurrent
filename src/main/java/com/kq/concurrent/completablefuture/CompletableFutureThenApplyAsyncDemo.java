@@ -52,7 +52,7 @@ public class CompletableFutureThenApplyAsyncDemo {
 
         stopWatch.stop();
 
-        System.out.printf("result=%s，spent time = %s \n","",stopWatch.toString());
+        System.out.printf("result=%s，spent time = %s \n",f.get(),stopWatch.toString());
 
 
         TimeUnit.SECONDS.sleep(8);

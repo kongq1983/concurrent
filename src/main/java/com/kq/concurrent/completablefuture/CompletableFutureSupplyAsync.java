@@ -23,6 +23,8 @@ public class CompletableFutureSupplyAsync {
 
         });
 
+
+
         System.out.println("----------------------------");
 
         f.join();
