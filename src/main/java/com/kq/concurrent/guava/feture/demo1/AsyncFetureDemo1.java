@@ -31,16 +31,18 @@ public class AsyncFetureDemo1 {
         Callable<String> callable2 = ()-> {
             System.out.println("---------------------start callable2-----------");
             TimeUnit.SECONDS.sleep(3);
+            if(callable1!=null) throw new RuntimeException("---------------------abcd--------------------");
             System.out.println("---------------------e-n-d callable2-----------");
             return "ok2";
         };
 
-        ListenableFuture<String> listenableFuture1 = JdkFutureAdapters.listenInPoolThread(threadPoolExecutor.submit(callable1));
-
-        callback(listenableFuture1);
-
         ListenableFuture<String> listenableFuture2 = JdkFutureAdapters.listenInPoolThread(threadPoolExecutor.submit(callable2));
-        callback(listenableFuture2);
+        callback(listenableFuture2,"2");
+
+        ListenableFuture<String> listenableFuture1 = JdkFutureAdapters.listenInPoolThread(threadPoolExecutor.submit(callable1));
+        callback(listenableFuture1,"1");
+
+
 
 
         System.out.println("---------------main thread execute -------------------------");
@@ -49,7 +51,7 @@ public class AsyncFetureDemo1 {
         threadPoolExecutor.shutdown();
     }
 
-    private static void callback(ListenableFuture<String> listenableFuture){
+    private static void callback(ListenableFuture<String> listenableFuture,String sign){
         Futures.addCallback(listenableFuture,new FutureCallback<String>(){
 
             @Override
@@ -59,8 +61,19 @@ public class AsyncFetureDemo1 {
 
             @Override
             public void onFailure(Throwable t) {
-                t.printStackTrace();
+//                t.printStackTrace();
+                System.out.println("onFailure execption = "+t+" sign="+sign);
+                Callable<String> callable2 = ()-> {
+                    System.out.println("---------------------start callable3-----------");
+                    TimeUnit.SECONDS.sleep(3);
+                    System.out.println("---------------------e-n-d callable3-----------");
+                    return "ok3";
+                };
+
+                ListenableFuture<String> listenableFuture1 = JdkFutureAdapters.listenInPoolThread(threadPoolExecutor.submit(callable2));
+                callback(listenableFuture1,"3");
             }
+
         },threadPoolExecutor);
     }
 
