@@ -46,6 +46,7 @@ public class FetureDemo1 {
         System.out.println("---------------main thread execute -------------------------");
 
         TimeUnit.SECONDS.sleep(8);
+        threadPoolExecutor.shutdown();
     }
 
     private static void callback(ListenableFuture<String> listenableFuture){
