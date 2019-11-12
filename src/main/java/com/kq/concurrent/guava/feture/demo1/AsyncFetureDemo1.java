@@ -14,7 +14,7 @@ import java.util.concurrent.*;
  * @author kq
  * @date 2019-11-12
  */
-public class FetureDemo1 {
+public class AsyncFetureDemo1 {
 
     static BlockingQueue blockingQueue = new ArrayBlockingQueue(100);
     static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(2,2,3,TimeUnit.SECONDS,blockingQueue);
