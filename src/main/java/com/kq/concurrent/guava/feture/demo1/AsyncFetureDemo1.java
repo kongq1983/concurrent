@@ -23,15 +23,17 @@ public class AsyncFetureDemo1 {
 
         Callable<String> callable1 = ()-> {
             System.out.println("---------------------start callable1-----------");
-            TimeUnit.SECONDS.sleep(5);
+//            TimeUnit.SECONDS.sleep(5);
+            TimeUnit.MINUTES.sleep(5);
             System.out.println("---------------------e-n-d callable1-----------");
             return "ok1";
         };
 
         Callable<String> callable2 = ()-> {
             System.out.println("---------------------start callable2-----------");
-            TimeUnit.SECONDS.sleep(3);
-            if(callable1!=null) throw new RuntimeException("---------------------abcd--------------------");
+//            TimeUnit.SECONDS.sleep(3);
+            TimeUnit.SECONDS.sleep(125);
+//            if(callable1!=null) throw new RuntimeException("---------------------abcd--------------------");
             System.out.println("---------------------e-n-d callable2-----------");
             return "ok2";
         };
@@ -39,15 +41,16 @@ public class AsyncFetureDemo1 {
         ListenableFuture<String> listenableFuture2 = JdkFutureAdapters.listenInPoolThread(threadPoolExecutor.submit(callable2));
         callback(listenableFuture2,"2");
 
-        ListenableFuture<String> listenableFuture1 = JdkFutureAdapters.listenInPoolThread(threadPoolExecutor.submit(callable1));
-        callback(listenableFuture1,"1");
+//        ListenableFuture<String> listenableFuture1 = JdkFutureAdapters.listenInPoolThread(threadPoolExecutor.submit(callable1));
+//        callback(listenableFuture1,"1");
 
 
 
 
         System.out.println("---------------main thread execute -------------------------");
 
-        TimeUnit.SECONDS.sleep(8);
+//        TimeUnit.SECONDS.sleep(8);
+        TimeUnit.MINUTES.sleep(8);
         threadPoolExecutor.shutdown();
     }
 
@@ -56,7 +59,7 @@ public class AsyncFetureDemo1 {
 
             @Override
             public void onSuccess(String result) {
-                System.out.println(result);
+                System.out.println("onSuccess result:"+result);
             }
 
             @Override
