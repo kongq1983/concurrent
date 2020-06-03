@@ -37,6 +37,11 @@
             <version>28.1-jre</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.openjdk.jol</groupId>
+            <artifactId>jol-core</artifactId>
+            <version>0.10</version>
+        </dependency>
 
     </dependencies>
 
