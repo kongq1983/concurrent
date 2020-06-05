@@ -1,5 +1,7 @@
 package com.kq.concurrent.interrupt;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * ThreadInputDemo1
  *
@@ -19,6 +21,8 @@ public class ThreadInputDemo1 {
             }
 
             System.out.println("The End ! isInterrupted="+Thread.currentThread().isInterrupted());
+            System.out.println("The End ! isInterrupted="+Thread.currentThread().isInterrupted());
+            System.out.println("The End ! isInterrupted="+Thread.currentThread().isInterrupted());
 
         });
 
@@ -27,6 +31,8 @@ public class ThreadInputDemo1 {
         Thread.sleep(2000);
 
         t.interrupt();
+
+        TimeUnit.SECONDS.sleep(60);
 
     }
 
