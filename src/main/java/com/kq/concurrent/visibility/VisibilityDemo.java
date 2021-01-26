@@ -8,8 +8,8 @@ import java.util.concurrent.TimeUnit;
 public class VisibilityDemo {
 
     int i=0;
-//    boolean isRunning = true;
-    volatile boolean isRunning = true;
+    boolean isRunning = true;
+//    volatile boolean isRunning = true;
 
     public static void main(String[] args) throws Exception{
 
@@ -20,6 +20,7 @@ public class VisibilityDemo {
             public void run() {
                 while(demo.isRunning){
                     demo.i++;
+//                    System.out.println(Thread.currentThread().getName()+",is running. index="+demo.i);
                 }
 
                 // 不加volatile 有可能不会打印 这句

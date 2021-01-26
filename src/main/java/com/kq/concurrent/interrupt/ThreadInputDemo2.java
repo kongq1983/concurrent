@@ -16,6 +16,7 @@ public class ThreadInputDemo2 {
                 if(interrupted) {
                     atomicInteger.incrementAndGet();
                     System.out.println("============================"+Thread.currentThread().getName()+" "+interrupted);
+                    break;
                 }else {
                     if(atomicInteger.get()>0){
                         atomicInteger.incrementAndGet();
