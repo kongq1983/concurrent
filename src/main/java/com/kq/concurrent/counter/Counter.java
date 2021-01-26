@@ -8,4 +8,8 @@ public class Counter {
         i++;
     }
 
+    public synchronized void addSyncIndex(){
+        i++;
+    }
+
 }

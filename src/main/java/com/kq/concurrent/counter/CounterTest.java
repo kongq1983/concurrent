@@ -11,6 +11,9 @@ public class CounterTest {
             Thread t = new Thread(()->{
 
                 for(int j=0;j<10000;j++) {
+                    // 同步 这个打印时正常的  60000
+//                    counter.addSyncIndex();
+                    // 这个具体时什么值 不知道
                     counter.addIndex();
                 }
                 System.out.println(Thread.currentThread().getName()+" is end");
