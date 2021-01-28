@@ -2,7 +2,10 @@ package com.kq.concurrent.counter;
 
 import java.util.concurrent.TimeUnit;
 
-public class CounterTest {
+/**
+ * 本例是线程安全的 也就是最终输出的值时对的
+ */
+public class CounterIncrementTest {
 
     public static void main(String[] args) throws Exception{
         final Counter counter = new Counter();
@@ -14,7 +17,7 @@ public class CounterTest {
                     // 同步 这个打印时正常的  60000
 //                    counter.addSyncIndex();
                     // 这个具体时什么值 不知道
-                    counter.addIndex();
+                    counter.increment();
                 }
                 System.out.println(Thread.currentThread().getName()+" is end");
 
@@ -24,10 +27,8 @@ public class CounterTest {
 
         TimeUnit.SECONDS.sleep(8);
         // 具体的i，不确定
-        System.out.println(counter.i);
+        System.out.println(counter.get());
 
     }
-
-
 
 }
