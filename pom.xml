@@ -7,9 +7,11 @@
     <groupId>com.kq</groupId>
     <artifactId>concurrent</artifactId>
     <packaging>pom</packaging>
+    <!--<packaging>pom</packaging>-->
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>myfeture</module>
+        <module>thread</module>
     </modules>
 
     <properties>
@@ -47,6 +49,20 @@
 
 
     <build>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                </includes>
+            </resource>
+           <!-- <resource>
+                <directory>${basedir}/src/main/resources</directory>
+            </resource>-->
+        </resources>
+
+
         <plugins>
             <!-- 指定jdk，防止update project -->
             <plugin>
