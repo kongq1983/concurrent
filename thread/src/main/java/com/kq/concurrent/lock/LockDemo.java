@@ -1,5 +1,7 @@
 package com.kq.concurrent.lock;
 
+import com.kq.concurrent.util.PropertiesUtil;
+
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -31,7 +33,10 @@ public class LockDemo {
         try{
             System.out.println("=======================================================");
 
-            TimeUnit.MINUTES.sleep(10);
+//            TimeUnit.MINUTES.sleep(10);
+            while (PropertiesUtil.isLock()) {
+                TimeUnit.SECONDS.sleep(5);
+            }
 
         }catch (Exception e) {
             e.printStackTrace();
