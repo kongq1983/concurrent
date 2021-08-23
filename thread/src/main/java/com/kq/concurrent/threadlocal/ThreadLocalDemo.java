@@ -12,8 +12,13 @@ public class ThreadLocalDemo {
 
     public static void main(String[] args) throws Exception {
 
+        System.out.println("---------------start-----------------------");
+
         new Thread(()->{
-            value.set("milk");
+            value.set("milk0");
+            value.set("milk1");
+            value.set("milk2");
+            value.set("milk3");
 
             try {
                 Thread.sleep(1000L);
@@ -22,18 +27,19 @@ public class ThreadLocalDemo {
             }
             // milk
             System.out.println("get="+value.get());
-        }).start();
+        },"thread-1").start();
 
 
         new Thread(()->{
             try {
                 Thread.sleep(1000L);
+                value.set("milk11");
                 // null
                 System.out.println("get1="+value.get());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }).start();
+        },"thread-2").start();
 
 
 

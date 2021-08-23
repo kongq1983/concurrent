@@ -21,6 +21,12 @@ public class LockDemo {
 
             lock.lock();
             try {
+                try {
+                    TimeUnit.MINUTES.sleep(5);
+                }catch (Exception e) {
+                    e.printStackTrace();
+                }
+
                 System.out.println("------------------------------------------------");
             }finally {
                 lock.unlock();
@@ -32,12 +38,12 @@ public class LockDemo {
 
         try{
             System.out.println("=======================================================");
-
-//            TimeUnit.MINUTES.sleep(10);
-            while (PropertiesUtil.isLock()) {
-                TimeUnit.SECONDS.sleep(5);
-            }
-
+//
+////            TimeUnit.MINUTES.sleep(10);
+//            while (PropertiesUtil.isLock()) {
+//                TimeUnit.SECONDS.sleep(5);
+//            }
+            TimeUnit.MINUTES.sleep(5);
         }catch (Exception e) {
             e.printStackTrace();
         }
@@ -45,8 +51,7 @@ public class LockDemo {
             lock.unlock();
         }
 
-
-
+        System.out.println("");
     }
 
 }
