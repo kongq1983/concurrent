@@ -3,6 +3,7 @@ package com.kq.concurrent.executor;
 import com.kq.concurrent.util.DateUtil;
 
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -17,6 +18,8 @@ public class ThreadPoolExecutorShutdownDemo {
             5, TimeUnit.SECONDS,new ArrayBlockingQueue<Runnable>(10));
 
     public static void main(String[] args) {
+
+        threadPoolExecutor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
 
         AtomicInteger atomicInteger = new AtomicInteger(1);
 
