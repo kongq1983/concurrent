@@ -1,0 +1,35 @@
+package com.kq.debugger;
+
+/**
+ * @author kq
+ * @date 2021-10-14 9:16
+ * @since 2020-0630
+ */
+public class Stu {
+    private int id;
+    private String name;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Stu{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
+}

@@ -1,0 +1,7 @@
+POST http://172.16.5.12:4121/102/login/system/r.do?t=0.6047267074396783
+Content-Type: application/json
+param-token: 53a7e1ee8ff655eba2b26dad00566ef7
+
+{"username":"sa","password":"paFUTSQ2HptG9shcGlu9Xg==","tenantCode":""}
+
+###

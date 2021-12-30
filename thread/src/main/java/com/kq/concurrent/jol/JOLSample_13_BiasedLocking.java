@@ -27,11 +27,16 @@ public class JOLSample_13_BiasedLocking {
     public static void main(String[] args) throws Exception {
         out.println(VM.current().details());
 
-        TimeUnit.SECONDS.sleep(6);
+
 
         final A a = new A();
-
         ClassLayout layout = ClassLayout.parseInstance(a);
+
+        out.println("**** Before object");
+        out.println(layout.toPrintable());  // 这里为什么是偏向锁
+        TimeUnit.SECONDS.sleep(6);
+
+
 
         out.println("**** Fresh object");
         out.println(layout.toPrintable());

@@ -1,5 +1,7 @@
 package com.kq.concurrent.threadlocal;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * ThreadLocalDemo
  *
@@ -30,18 +32,18 @@ public class ThreadLocalDemo {
         },"thread-1").start();
 
 
-        new Thread(()->{
-            try {
-                Thread.sleep(1000L);
-                value.set("milk11");
-                // null
-                System.out.println("get1="+value.get());
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        },"thread-2").start();
+//        new Thread(()->{
+//            try {
+//                Thread.sleep(1000L);
+//                value.set("milk11");
+//                // null
+//                System.out.println("get1="+value.get());
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        },"thread-2").start();
 
-
+        TimeUnit.MINUTES.sleep(10);
 
     }
 

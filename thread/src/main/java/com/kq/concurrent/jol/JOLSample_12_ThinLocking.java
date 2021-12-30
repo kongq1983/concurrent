@@ -34,7 +34,7 @@ public class JOLSample_12_ThinLocking {
         ClassLayout layout = ClassLayout.parseInstance(a);
 
         out.println("**** Fresh object");
-        out.println(layout.toPrintable());
+        out.println(layout.toPrintable()); // 偏向锁
         out.println("a hashCode: " + Integer.toHexString(a.hashCode()));
         out.println("before lock , main thread. hashCode: " + Integer.toHexString(Thread.currentThread().hashCode()));
         out.println("before lock , main thread. id: " + Thread.currentThread().getId());
@@ -46,7 +46,7 @@ public class JOLSample_12_ThinLocking {
             out.println("locked main thread. hashCode: " + Integer.toHexString(Thread.currentThread().hashCode()));
             out.println("locked main thread. id: " + Thread.currentThread().getId());
             out.println("locked main thread. bi hashCode: " + Integer.toBinaryString(Thread.currentThread().hashCode()));
-            out.println(layout.toPrintable());
+            out.println(layout.toPrintable()); // 轻量级锁
         }
 
         out.println("**** After the lock");
@@ -55,7 +55,7 @@ public class JOLSample_12_ThinLocking {
         out.println("after lock , main thread. id: " + Thread.currentThread().getId());
         out.println("after lock , main thread. bi hashCode: " + Integer.toBinaryString(Thread.currentThread().hashCode()));
 
-        out.println(layout.toPrintable());
+        out.println(layout.toPrintable()); // 无锁
     }
 
     public static class A {
