@@ -1,8 +1,11 @@
 package com.kq.concurrent.executor;
 
+import com.kq.A;
+
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * 验证allowCoreThreadTimeOut=true 最后会保留1个workder
@@ -17,14 +20,21 @@ public class AllowCoreThreadTimeOutTrueDemo {
     static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(3,5,
             5, TimeUnit.SECONDS,new ArrayBlockingQueue<Runnable>(10));
 
+    static AtomicLong atomicLong = new AtomicLong();
+
     public static void main(String[] args) throws Exception{
 
         threadPoolExecutor.allowCoreThreadTimeOut(true);
+        threadPoolExecutor.setKeepAliveTime(3,TimeUnit.SECONDS);
 
         for (int i=0;i<10;i++) {
             threadPoolExecutor.execute(() -> {
                 try {
-                    TimeUnit.SECONDS.sleep(2);
+                    int timeout = 2;
+                    if(atomicLong.incrementAndGet()==5){
+                        timeout= 20; // 不会报错的
+                    }
+                    TimeUnit.SECONDS.sleep(timeout);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
