@@ -29,6 +29,10 @@ public class ThreadLocalDemo {
             }
             // milk
             System.out.println("get="+value.get());
+
+            value.remove();  // 删除ThreadLocal
+            System.out.println();
+
         },"thread-1").start();
 
 
