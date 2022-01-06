@@ -1,11 +1,18 @@
 package com.kq.concurrent.concurrenthashmap;
 
 /**
+ * -server -Xcomp -XX:+UnlockDiagnosticVMOptions -XX:+PrintAssembly -XX:CompileCommand=compileonly,*NumIncrementDemo.increment*
  * @author kq
  * @date 2022-01-04 14:53
  * @since 2020-0630
  */
 public class NumIncrementDemo {
+
+    public volatile  int sign;
+
+    public void signDeal(){
+        sign++;
+    }
 
     public static void main(String[] args) {
 
@@ -43,5 +50,16 @@ public class NumIncrementDemo {
         i=++i;
         return i;
     }
+
+    public int incrementaa() {
+
+        int j = 0;
+        for(int i=0;i<10;i++) {
+
+        }
+        return j;
+
+    }
+
 
 }
