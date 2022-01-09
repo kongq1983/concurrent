@@ -44,4 +44,11 @@ public class NumIncrementDemo {
         return i;
     }
 
+
+    public int incrementaa() {
+        int i = 0;
+
+        i=i++;
+        return i;
+    }
 }
