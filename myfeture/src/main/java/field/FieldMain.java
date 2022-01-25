@@ -14,11 +14,17 @@ import java.util.concurrent.TimeUnit;
 public class FieldMain {
 
     A a = new A();
+    A aa = new A();
+    A aaa = new A();
     B b = new B();
     C c = new C();
 
     public static void main(String[] args) throws Exception{
+
         FieldMain f = new FieldMain();
+
+        System.out.println(f.aa);
+        System.out.println(f.aaa);
 
         ClassLayout layout1 = ClassLayout.parseInstance(f.a);
         ClassLayout layout2 = ClassLayout.parseInstance(f.b);
