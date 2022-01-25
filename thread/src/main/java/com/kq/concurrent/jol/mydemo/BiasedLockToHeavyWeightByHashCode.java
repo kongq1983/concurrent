@@ -38,12 +38,16 @@ public class BiasedLockToHeavyWeightByHashCode {
             a.hashCode();
             out.println("**** With the lock");
             out.println(layout.toPrintable()); // synchronized里面调用hashcode ，则这里是重量级锁
-        }
+        }  // 感觉只是释放_owner，没处理markword
 
         out.println("**** After the lock");
         out.println(layout.toPrintable()); //  重量级锁？ why?
 
-        TimeUnit.MILLISECONDS.sleep(1000); //
+//        TimeUnit.MILLISECONDS.sleep(1000); // 如果调用sleep 下面会变无锁
+        int index = 0;
+        while((index++)<10) {
+            Thread.yield();
+        }
 
         out.println("**** end the lock");
         out.println(layout.toPrintable()); // 上面要休息1s，后这里才无锁
