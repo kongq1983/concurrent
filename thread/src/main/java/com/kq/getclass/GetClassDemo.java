@@ -19,6 +19,8 @@ public class GetClassDemo {
 
         Class clazz = Drawing.class;
 
+
+
         System.out.println(clazz);
         System.out.println(Drawing.class);
         System.out.println(x.getClass());

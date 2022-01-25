@@ -12,12 +12,16 @@ public class MainDemo {
     public static void main(String[] args) {
 
         A a = new A();
-        a.getClass();
+        Class clazz = a.getClass();
 
         print(ClassLayout.parseInstance(a).toPrintable());
 
         B b = new B();
         print(ClassLayout.parseInstance(b).toPrintable());
+
+//        A.class == a.getClass();
+//        A.class.getMethod();
+//        a.getClass().getMethod();
 
     }
 
