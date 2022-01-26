@@ -4,3 +4,8 @@
 
 
 延迟偏向之前初始化对象 -> hashcode ->
+
+
+结论
+synchronized里面 调用hashcode()，需要生成的hashcode()的，则直接变重量级锁
+synchronized里面 调用hashcode()，不需要生成hashcode的

@@ -17,7 +17,7 @@ public class BiasedLockToHeavyWeightByHashCode {
 
     public static void main(String[] args) throws Exception{
 
-        TimeUnit.MILLISECONDS.sleep(4100);  // 4s之后  是偏向锁  这里多100ms
+        TimeUnit.MILLISECONDS.sleep(4100);  // 4s之后  是偏向锁  这里多100ms  注释这个 synchronized之前，偏向锁变无锁
 
         final NoLockToLightBiasedLock.A a = new NoLockToLightBiasedLock.A();
         ClassLayout layout = ClassLayout.parseInstance(a);
@@ -35,9 +35,9 @@ public class BiasedLockToHeavyWeightByHashCode {
 
 
         synchronized (a) {
-            a.hashCode();
+            a.hashCode(); // 在synchronized里(第一次生成hashcode)，则下面直接重量级锁
             out.println("**** With the lock");
-            out.println(layout.toPrintable()); // synchronized里面调用hashcode ，则这里是重量级锁
+            out.println(layout.toPrintable());
         }  // 感觉只是释放_owner，没处理markword
 
         out.println("**** After the lock");
@@ -50,7 +50,7 @@ public class BiasedLockToHeavyWeightByHashCode {
         }
 
         out.println("**** end the lock");
-        out.println(layout.toPrintable()); // 上面要休息1s，后这里才无锁
+        out.println(layout.toPrintable()); // 上面要休息1s，后这里才无锁(调用sleep)
     }
 
 
