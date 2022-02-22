@@ -13,3 +13,5 @@ synchronized里面 调用hashcode()，需要生成的hashcode()的，则直接�
 synchronized里面 调用hashcode()，不需要生成hashcode的
 
 自己实现的hashcode相当于普通函数，没有特别意义
+
+最关键的是这个System.identityHashCode
