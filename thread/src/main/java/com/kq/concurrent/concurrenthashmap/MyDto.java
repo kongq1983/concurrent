@@ -16,13 +16,13 @@ public class MyDto {
 
     @Override
     public int hashCode() {
-//        return 1;
+        return 1;
 
-        if(i<100){
-            return (i%100);
-        } else {
-            return 1;
-        }
+//        if(i<100){
+//            return (i%100);
+//        } else {
+//            return 1;
+//        }
 
 
     }
